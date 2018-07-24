@@ -73,7 +73,7 @@ Once it can find matching depenencies, it installs and links the matched workspa
 
 For scoped packages, if you don't provide a `workspaces` array, it defaults to matching against the current scope. Most mono-repos will have this setup. However, if you need to install and link any dependencies that aren't part of the current setup, then you can still specify `workspaces` and it will override the default scope matching. This works alike for both scoped and unscoped workspaces.
 
-Here's an example of a combination of the exampels above:
+Here's an example of a combination of the examples above:
 
 ```json
 {
