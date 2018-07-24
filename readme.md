@@ -6,13 +6,25 @@ Like many other mono-repo solutions, Camp is based on the idea that you want to 
 
 _It was created to explore the idea that mono-repos may just not be necessary._
 
+There's a few things it aims to do:
+
+* Automate installation and linking of dependencies that are in the same project.
+* Running scripts against multiple workspaces at once.
+
 ## Installing
 
 Er... you can't do that yet. This is still experimental and yet to be published.
 
 ## Getting started
 
-You start with a single repo. When you run `camp` inside of it, it will figure out what other packages you might be working on, clone them next to your current repo and then link them into your node modules using `npm link`. It does this using an idea - that isn't new - called workspaces.
+Let's define two terms we use here:
+
+1. Project - a set of workspaces.
+2. Workspace - a single repo within a project.
+
+You start with a single repo and run `camp` inside of it. Camp will then figure out what other workspaces you might be working on, clone them next to your current repo and then link them into your node modules using `npm link`.
+
+When you want to work on a linked workspaces, just run `camp` inside of them and any related workspaces that aren't installed yet will be installed and linked accordingly.
 
 ### Scoped packages
 
@@ -29,7 +41,7 @@ Given a `package.json` of:
 }
 ```
 
-Running `camp` will install `@scope/package2` next to `@scope/package1` making the folder structure look like:
+Running `camp` in a directory of `@scope/package1` with the `package.json` above, will install `@scope/package2` next to `@scope/package1` making the folder structure look like:
 
 ```
 - @scope
@@ -42,7 +54,7 @@ Running `camp` will install `@scope/package2` next to `@scope/package1` making t
 
 ### Un-scoped packages
 
-If your package is not scoped, then it won't be able to find anything until you give it some hints via a `workspaces` `array` in your `package.json`. This is an array of `minimatch` patterns to match against your project's dependencies.
+If your package is not scoped, then it won't be able to find anything until you give it some hints via a `workspaces` array in your `package.json`. This is an array of `minimatch` patterns to match against your project's dependencies.
 
 For example, if you do this, it won't match anything:
 
@@ -87,3 +99,23 @@ Here's an example of a combination of the examples above:
   ]
 }
 ```
+
+## Usage
+
+An asterisk (*) means the command is under implementation.
+
+### camp
+
+Installs and links the related workspaces related to the repo in the current working directory.
+
+### `camp install <pattern>` *
+
+Install workspaces for all dependencies matching the `pattern`.
+
+### `camp run <pattern> <command / args>` *
+
+Run a `<command / args>` across related workspaces matching `<pattern>`. To run across _all_ workspaces, use `**` for the `pattern`.
+
+* A single workspace: `camp run my-package npm i`.
+* Multiple workspaces: `camp run @scope/* npm i`.
+* All workspaces: `camp run ** npm i`.

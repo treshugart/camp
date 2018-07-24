@@ -16,7 +16,9 @@
     "minimatch": "^3.0.4",
     "read-pkg-up": "^4.0.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "flow-bin": "^0.77.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/treshugart/camp.git"
