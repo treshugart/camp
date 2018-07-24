@@ -1,0 +1,28 @@
+{
+  "name": "camp",
+  "version": "1.0.0",
+  "description": "> Camp is an NPM-based, low-config, mono-repo-like workflow for multiple repositories.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Trey Shugart <treshugart@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "execa": "^0.10.0",
+    "glob": "^7.1.2",
+    "glob-all": "^3.1.0",
+    "meow": "^5.0.0",
+    "minimatch": "^3.0.4",
+    "read-pkg-up": "^4.0.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/treshugart/camp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/treshugart/camp/issues"
+  },
+  "homepage": "https://github.com/treshugart/camp#readme"
+}
